@@ -13,6 +13,7 @@
     var soglia = function () {
       var oltre = window.scrollY > Math.max(48, eroe.offsetHeight - testata.offsetHeight - 24);
       testata.classList.toggle('scorre', oltre);
+      testata.classList.toggle('mossa', window.scrollY > 8);
     };
     window.addEventListener('scroll', soglia, { passive: true });
     window.addEventListener('resize', soglia);

@@ -7,6 +7,13 @@ window.sxInit = function (root) {
     if (root.matches && root.matches(sel)) l.unshift(root);
     return l;
   };
+  // chi non ha ancora il ritratto: un profilo neutro al suo posto
+  tutti('.persone > .persona').forEach(function (li) {
+    if (li.querySelector('.persona-foto')) return;
+    var s = document.createElement('span');
+    s.className = 'persona-foto persona-segnaposto'; s.setAttribute('aria-hidden', 'true');
+    li.insertBefore(s, li.firstChild);
+  });
   tutti('.persona > p').forEach(function (p) {
     if (p.dataset.sxPronto) return; p.dataset.sxPronto = '1';
     if (p.scrollHeight <= p.clientHeight + 2) { p.classList.add('bio-libera'); return; }
@@ -42,6 +49,18 @@ window.sxInit = function (root) {
     dopo.addEventListener('click', function () { vai(1); });
     b.addEventListener('scroll', function () { window.requestAnimationFrame(aggiorna); });
     aggiorna();
+  });
+  tutti('.numerato-chiaro').forEach(function (ol) {
+    if (ol.dataset.sxPronto || ol.children.length <= 6) return; ol.dataset.sxPronto = '1';
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'comp-altro'; b.textContent = 'Leggi tutto';
+    b.setAttribute('aria-expanded', 'false');
+    b.addEventListener('click', function () {
+      var aperto = ol.classList.toggle('aperto');
+      b.textContent = aperto ? 'Chiudi' : 'Leggi tutto';
+      b.setAttribute('aria-expanded', String(aperto));
+    });
+    ol.after(b);
   });
   // moduli dell'anteprima arrivati col sottomenu: non spediscono, rispondono
   if (root !== document) {

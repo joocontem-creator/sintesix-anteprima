@@ -5,6 +5,25 @@
   var bottone = d.querySelector('.apri-menu');
   var menu = d.getElementById('menu-mobile');
   if (bottone && menu) {
+    var ICO_PERSONA = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/></svg>';
+    var ICO_TEL = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>';
+    // sul telefono: Area Clienti sempre visibile accanto a «Menu»
+    if (!d.querySelector('.area-ico')) {
+      var ai = d.createElement('a');
+      ai.className = 'sp-bot area-ico'; ai.href = 'area-riservata.html';
+      ai.setAttribute('aria-label', 'Area Clienti'); ai.innerHTML = ICO_PERSONA;
+      bottone.parentNode.insertBefore(ai, bottone);
+    }
+    var telMenu = menu.querySelector('.sp-azioni .tel');
+    if (telMenu && !telMenu.querySelector('svg')) telMenu.insertAdjacentHTML('afterbegin', ICO_TEL);
+    var areaMenu = menu.querySelector('.sp-azioni a[href="area-riservata.html"]');
+    if (areaMenu && !areaMenu.querySelector('svg')) { areaMenu.classList.add('menu-area'); areaMenu.insertAdjacentHTML('afterbegin', ICO_PERSONA); }
+    var azioni = menu.querySelector('.sp-azioni');
+    if (azioni && !azioni.querySelector('.menu-cta')) {
+      var cta = d.createElement('a');
+      cta.className = 'sp-bot sp-arancio menu-cta'; cta.href = 'contatti.html'; cta.textContent = 'Richiedi un primo colloquio';
+      azioni.insertBefore(cta, azioni.firstChild);
+    }
     var chiudi = function () {
       bottone.setAttribute('aria-expanded', 'false');
       bottone.textContent = 'Menu';

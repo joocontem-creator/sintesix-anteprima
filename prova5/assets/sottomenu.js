@@ -9,7 +9,7 @@
   var ul = nav.querySelector('ul');
   var voci = [].slice.call(ul.querySelectorAll('a'));
   var percorso = function (u) { return new URL(u, location.href).pathname; };
-  var corrente = function () { return ul.querySelector('a[aria-current="page"]'); };
+  var corrente = function () { return ul.querySelector('a[aria-current]'); };
   var movimento = function () { return !window.matchMedia('(prefers-reduced-motion: reduce)').matches; };
 
   // la pillola: stesso indicatore delle linguette della Home

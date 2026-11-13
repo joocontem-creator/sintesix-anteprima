@@ -22,8 +22,14 @@
       stato.textContent = 'Pagina ' + (qui + 1) + ' di ' + pagine;
       if (anima) { ul.classList.remove('cambia'); void ul.offsetWidth; ul.classList.add('cambia'); }
     }
-    prima.addEventListener('click', function () { mostra(qui - 1, true); });
-    dopo.addEventListener('click', function () { mostra(qui + 1, true); });
+    // cambiando pagina si torna all'inizio della colonna, così il primo pezzo nuovo è subito in vista
+    var inCima = function () {
+      var col = ul.closest('.colonna-bacheca') || ul;
+      var alto = col.getBoundingClientRect().top;
+      if (alto < 0) window.scrollBy({ top: alto - 88, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    };
+    prima.addEventListener('click', function () { mostra(qui - 1, true); inCima(); });
+    dopo.addEventListener('click', function () { mostra(qui + 1, true); inCima(); });
     mostra(0, false);
     ul.classList.add('pronta');
   });

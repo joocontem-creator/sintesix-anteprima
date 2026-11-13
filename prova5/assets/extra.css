@@ -932,3 +932,217 @@ a.sp-risorsa:hover .sp-risorsa-copertina img{ transform:scale(1.04); }
   .spark .sp-pannello{ padding-top:14px; }
   .spark .sp-vetrina{ min-height:0; }
 }
+
+/* ===== prova 5 · telefono, giro 2 ===== */
+/* Home: appena si scorre, la testata ha un fondo scuro sfumato e il logo non copre i titoli */
+.spark.con-eroe .testata.mossa:not(.scorre){ background:rgba(31,40,44,.86); -webkit-backdrop-filter:saturate(1.2) blur(14px); backdrop-filter:saturate(1.2) blur(14px); transition:background-color .35s; }
+/* menu aperto: testata bianca piena, nessun pezzo di foto dietro */
+.spark .testata:has(#menu-mobile:not([hidden])){ background:var(--bianco) !important; -webkit-backdrop-filter:none; backdrop-filter:none; }
+.spark.con-eroe .testata:has(#menu-mobile:not([hidden])) .marchio img{ filter:none !important; }
+.spark.con-eroe .testata:has(#menu-mobile:not([hidden])) .apri-menu{ color:var(--ardesia) !important; border-color:rgba(48,60,66,.3) !important; background:transparent !important; }
+.spark .menu-mobile .sp-azioni{ display:flex; flex-direction:column; align-items:stretch; gap:14px; }
+.spark .menu-mobile .menu-cta{ order:-1; justify-content:center; min-height:52px; font-size:16px; }
+.spark .menu-mobile .sp-azioni .tel{ margin:0; text-align:center; font-size:17px; }
+.comp-altro{ display:none; }
+@media (max-width:720px){
+  /* sedi in Home: solo il testo, più piccole */
+  .spark .sede-scheda{ grid-template-columns:1fr; }
+  .spark .sede-scheda img{ display:none; }
+  /* le tre cifre: numero a sinistra, testo a destra, righe con aria */
+  .spark .sp-numeri, .anim .spark .sp-numeri{ margin-top:22px; border-top:1px solid var(--salvia); }
+  .spark .sp-numeri li, .anim .spark .sp-numeri li, .spark .sp-numeri li:first-child{ display:grid !important; grid-template-columns:118px minmax(0, 1fr); align-items:center; gap:16px; padding:18px 0 !important; border-top:0; border-bottom:1px solid var(--salvia); }
+  .spark .sp-numeri b{ font-size:44px !important; line-height:1; }
+  .spark .sp-numeri span{ font-size:15px; line-height:1.4; }
+  /* competenze: pannello più compatto, elenco chiuso con «Leggi tutto» */
+  .spark .pannello-conta.pc-scuro{ padding:40px 22px 28px; }
+  .spark .pc-scuro .conta{ font-size:72px; }
+  .spark .pc-scuro .pannello-testo{ font-size:19px; line-height:1.35; }
+  .spark .pc-scuro .numerato-chiaro{ margin-top:28px; }
+  .spark .pc-scuro .numerato-chiaro li{ padding:12px 0 !important; font-size:15.5px; }
+  .spark .numerato-chiaro:not(.aperto) > li:nth-child(n+7){ display:none !important; }
+  .spark .comp-altro{ display:block; margin:18px auto 4px; padding:12px 22px; border:1px solid rgba(255,255,255,.4); border-radius:999px; background:transparent; color:var(--bianco); font:inherit; font-size:15px; }
+  /* Professionisti: senza foto d'apertura, titoli nell'ordine giusto, schede compatte */
+  .spark main > figure.sp-banda-pagina:has(img[src*="riunione-2040"]){ display:none; }
+  .gruppo-quattro{ display:flex; flex-direction:column; }
+  .gruppo-quattro > .testa-partner{ order:1; }
+  .gruppo-quattro > .persone-grandi{ order:2; }
+  .gruppo-quattro > .testa-aggregati{ order:3; margin-top:48px; }
+  .gruppo-quattro > .persone-aggregati{ order:4; }
+  .spark .persone{ gap:10px; }
+  .spark .persone > .persona:has(> .persona-foto), .spark .persone > .persona:nth-child(n):has(> .persona-foto){ display:grid; grid-template-columns:76px minmax(0, 1fr); column-gap:16px; row-gap:10px; padding:16px; }
+  .spark .persone > .persona:has(> .persona-foto) > *{ grid-column:1 / -1; }
+  .spark .persone > .persona:has(> .persona-foto) > .persona-foto{ grid-column:1; width:76px; aspect-ratio:4 / 5; }
+  .spark .persone > .persona:has(> .persona-foto) > .persona-foto + div{ grid-column:2; align-self:center; }
+  .spark .persone .persona h3, .spark .persone-grandi .persona h3{ font-size:24px; }
+  .spark .persona p{ font-size:15px; }
+  .spark .sezione .testa h2{ font-size:28px; }
+  /* Bacheca: le tre etichette in fila, niente foto d'apertura */
+  .spark .filtri{ display:grid !important; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:6px; padding:6px; }
+  .spark .filtri a{ display:flex; align-items:center; justify-content:center; text-align:center; min-height:44px; padding:6px; font-size:11.5px; line-height:1.25; }
+  .spark .sp-banda-bassa{ display:none; }
+  /* Contatti: recapiti compatti, sedi solo testo */
+  .spark .canali{ display:grid !important; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; }
+  .spark .canale{ display:grid !important; grid-template-columns:30px minmax(0, 1fr); gap:2px 10px; align-items:center; padding:12px 14px !important; min-height:0 !important; }
+  .spark .canale-ico{ grid-row:1 / 3; width:30px; height:30px; margin:0 !important; }
+  .spark .canale-etichetta{ font-size:11px; margin:0 !important; }
+  .spark .canale-valore{ font-size:15px; line-height:1.3; margin:0 !important; overflow-wrap:anywhere; }
+  .spark .canali > li:last-child{ grid-column:1 / -1; }
+  .contatti-due .sede-mini img{ display:none; }
+  .contatti-due .sede-mini-testo{ padding:14px 16px; }
+  .contatti-due .sedi-mini{ grid-template-columns:1fr 1fr; gap:8px; }
+  .contatti-due .sede-mini-testo strong{ font-size:22px; }
+  /* Candidatevi: il modulo subito, senza la foto grande */
+  .cand-foto{ display:none; }
+}
+@media (max-width:720px){
+  .spark .persone > .persona:nth-child(n):last-child:has(> .persona-foto) > *{ grid-column:1 / -1; grid-row:auto; }
+  .spark .persone > .persona:nth-child(n):last-child:has(> .persona-foto) > .persona-foto{ grid-column:1; grid-row:1; }
+  .spark .persone > .persona:nth-child(n):last-child:has(> .persona-foto) > .persona-foto + div{ grid-column:2; grid-row:1; }
+}
+@media (max-width:720px){
+  .js .spark .persona > p:not(.bio-libera){ -webkit-line-clamp:3; }
+  .spark .sp-doppia .testa-foto:not(.cand-foto){ display:none; }
+}
+
+/* ===== prova 5 · telefono, giro 3 ===== */
+/* Area Clienti: icona sempre visibile accanto a «Menu» */
+.area-ico{ display:none !important; }
+@media (max-width:1180px){
+  .spark .area-ico{ display:inline-flex !important; align-items:center; justify-content:center; width:44px; min-width:44px; height:44px; padding:0; margin-left:auto; margin-right:8px; }
+  .spark .area-ico + .apri-menu{ margin-left:0; }
+  .spark .testata:has(#menu-mobile:not([hidden])) .area-ico{ color:var(--ardesia) !important; border-color:rgba(48,60,66,.3) !important; background:transparent !important; }
+  /* nel menu: primo colloquio, poi Area Clienti ben visibile, poi il telefono con la sua icona */
+  .spark .menu-mobile .sp-azioni .menu-area{ order:0; display:flex; align-items:center; justify-content:center; gap:10px; min-height:52px; font-size:16px; color:var(--ardesia) !important; border-color:rgba(48,60,66,.35) !important; background:var(--bianco) !important; }
+  .spark .menu-mobile .sp-azioni .tel{ order:1; display:flex; align-items:center; justify-content:center; gap:10px; min-height:48px; color:var(--ardesia) !important; }
+  .spark .menu-mobile .sp-azioni .menu-cta{ order:-1; }
+}
+@media (max-width:720px){
+  /* sedi in Home: la fotina nell'angolo della scheda */
+  .spark .sede-scheda{ grid-template-columns:minmax(0, 1fr) 76px; align-items:center; }
+  .spark .sede-scheda img{ display:block; order:2; width:64px; height:64px; min-height:0; margin:14px 14px 14px 0; border-radius:8px; object-fit:cover; }
+  /* Professionisti: ritratti un po' più grandi */
+  .spark .persone > .persona:has(> .persona-foto), .spark .persone > .persona:nth-child(n):has(> .persona-foto){ grid-template-columns:112px minmax(0, 1fr); }
+  .spark .persone > .persona:has(> .persona-foto) > .persona-foto{ width:112px; }
+  /* Contatti: quattro recapiti in due righe piene, nessun buco accanto alla PEC */
+  .spark .canali > li:last-child{ grid-column:auto; }
+  .spark .canale-valore{ font-size:14px; }
+}
+@media (max-width:720px){
+  .rete-nodi{ grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; }
+  .rete-nodi li{ min-height:52px; padding:10px 12px; gap:10px; font-size:14px; line-height:1.25; }
+}
+
+/* ===== prova 5 · telefono, giro 4 ===== */
+@media (max-width:1180px){
+  /* Area Clienti attaccata a «Menu» */
+  .spark .area-ico{ margin-right:-22px; }
+}
+@media (max-width:720px){
+  /* Partner in Home: foto a tutta altezza a sinistra, senza bordi; nome e ruolo centrati a destra */
+  .spark .sp-p:has(.sp-p-foto){ display:grid; grid-template-columns:128px minmax(0, 1fr); grid-template-rows:1fr; gap:0; padding:0; overflow:hidden; align-items:stretch; min-height:150px; }
+  .spark .sp-p:has(.sp-p-foto) .sp-p-foto{ grid-row:1; grid-column:1; width:100%; height:100%; aspect-ratio:auto; border-radius:0; object-fit:cover; object-position:50% 20%; }
+  .spark .sp-p:has(.sp-p-foto) > span:not(.sp-p-dati){ grid-column:2; grid-row:1; align-self:center; padding:18px 18px; }
+  /* Professionisti: la stessa scheda, foto piena a sinistra e tutte le informazioni a destra */
+  .spark .persone > .persona:has(> .persona-foto), .spark .persone > .persona:nth-child(n):has(> .persona-foto), .spark .persone > .persona:nth-child(n):last-child:has(> .persona-foto){ grid-template-columns:120px minmax(0, 1fr); grid-auto-rows:auto; column-gap:0; row-gap:8px; padding:0; overflow:hidden; align-content:center; }
+  .spark .persone > .persona:nth-child(n):has(> .persona-foto) > *, .spark .persone > .persona:nth-child(n):last-child:has(> .persona-foto) > *{ grid-column:2; grid-row:auto; margin-left:16px; margin-right:16px; }
+  .spark .persone > .persona:nth-child(n):has(> .persona-foto) > .persona-foto, .spark .persone > .persona:nth-child(n):last-child:has(> .persona-foto) > .persona-foto{ grid-column:1; grid-row:1 / span 6; width:100%; height:100%; min-height:170px; margin:0; aspect-ratio:auto; border-radius:0; object-fit:cover; object-position:50% 18%; }
+  .spark .persone > .persona:nth-child(n):has(> .persona-foto) > .persona-foto + div, .spark .persone > .persona:nth-child(n):last-child:has(> .persona-foto) > .persona-foto + div{ grid-column:2; grid-row:auto; align-self:auto; margin-top:16px; }
+  .spark .persone > .persona:nth-child(n):has(> .persona-foto) > :last-child{ margin-bottom:16px; }
+  .spark .persone .persona h3{ font-size:22px; }
+  .spark .persone .persona .ruolo{ font-size:13.5px; margin-top:4px; }
+  .spark .persone .persona > p{ font-size:14px; line-height:1.45; }
+  /* Bacheca: le etichette scure, chiaramente diverse dalle schede */
+  .spark .filtri{ background:transparent !important; padding:0 !important; }
+  .spark .filtri a{ background:var(--ardesia) !important; color:var(--bianco) !important; border-radius:999px; font-weight:500; letter-spacing:.06em; }
+  /* Contatti: etichetta e valore vicini, al centro della scheda; più ordine prima del modulo */
+  .spark .canale{ align-content:center; grid-template-rows:auto auto; }
+  .spark .canale-etichetta{ align-self:end; }
+  .spark .canale-valore{ align-self:start; }
+  .spark .contatti-dato{ display:none; }
+  .spark main > figure.sp-banda-intera:has(img[src*="piano35"]){ display:none; }
+  .spark .contatti-due{ display:flex !important; flex-direction:column; gap:28px; }
+  .spark .contatti-due > div:not(.contatti-sx){ order:1; padding:22px 18px; border-radius:var(--sp-r); background:var(--sp-t2); }
+  .spark .contatti-sx{ order:2; }
+  .spark .contatti-due #t-modulo{ position:static !important; width:auto !important; height:auto !important; margin:0 0 18px !important; clip:auto !important; clip-path:none !important; overflow:visible !important; white-space:normal !important; font-family:var(--titoli); font-size:26px; line-height:1.15; letter-spacing:-.02em; }
+}
+
+/* ===== prova 5 · telefono, giro 5 ===== */
+/* i bottoni con il numero hanno l'icona del telefono (anche al computer) */
+.spark a.sp-bot[href^="tel:"], .spark a.bot[href^="tel:"]{ display:inline-flex; align-items:center; justify-content:center; gap:10px; }
+.spark a.sp-bot[href^="tel:"]::before, .spark a.bot[href^="tel:"]::before{ content:""; flex:none; width:17px; height:17px; background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2'/%3E%3C/svg%3E") center / contain no-repeat; }
+@media (max-width:720px){
+  /* niente vuoto dove al telefono la foto d'apertura non c'è */
+  .spark main > figure.sp-banda-bassa + .sezione,
+  .spark main > figure:has(img[src*="piano35"]) + .sezione,
+  .spark main > figure:has(img[src*="riunione-2040"]) + .sezione{ padding-top:20px !important; }
+  .spark .apertura:has(+ figure.sp-banda-bassa), .spark .apertura:has(+ figure img[src*="piano35"]), .spark .apertura:has(+ figure img[src*="riunione-2040"]){ padding-bottom:0; }
+  /* Contatti: recapiti come semplice elenco con icone, diverso dal modulo */
+  .spark .canali{ display:block !important; border-top:1px solid rgba(48,60,66,.14); }
+  .spark .canali > li{ border-bottom:1px solid rgba(48,60,66,.14); }
+  .spark .canale{ display:grid !important; grid-template-columns:26px 58px minmax(0, 1fr); grid-template-rows:auto; align-items:center; gap:0 12px; padding:13px 2px !important; background:none !important; border:0 !important; border-radius:0 !important; box-shadow:none !important; transform:none !important; }
+  .spark .canale-ico{ grid-row:1; width:26px; height:26px; background:none !important; }
+  .spark .canale-etichetta{ align-self:center; font-size:11px; }
+  .spark .canale-valore{ align-self:center; font-size:15.5px; }
+  /* Bacheca: etichette chiare con freccia, si capisce che portano alle colonne */
+  .spark .filtri a{ background:var(--bianco) !important; color:var(--ardesia) !important; border:1px solid rgba(48,60,66,.28); gap:6px; font-weight:500; }
+  .spark .filtri a::after{ content:"↓"; font-size:13px; color:#F85004; }
+  .spark .filtri a:active{ background:var(--sp-t2) !important; }
+  /* Area Riservata: un ingresso dedicato, scuro e raccolto */
+  .spark main:has(.area-due) > .apertura{ background:var(--ardesia); color:var(--bianco); box-shadow:0 0 0 100vmax var(--ardesia); clip-path:inset(0 -100vmax); padding-block:36px 48px; margin-bottom:0; }
+  .spark .area-due{ display:flex !important; flex-direction:column; gap:28px; }
+  .spark .area-due h1{ color:var(--bianco); }
+  .spark .area-due .occhiello{ color:#F85004; letter-spacing:.14em; }
+  .spark .area-due .guida{ color:rgba(255,255,255,.78); font-size:17px; line-height:1.45; }
+  .spark .area-due .punti{ margin-top:18px; border-color:rgba(255,255,255,.16) !important; }
+  .spark .area-due .punti li{ display:flex; align-items:center; gap:12px; padding:13px 0; border-color:rgba(255,255,255,.16) !important; color:var(--bianco); font-size:16px; }
+  .spark .area-due .punti li::before{ content:"" !important; display:block !important; flex:none; width:8px; height:8px; border-radius:50%; background:#F85004; }
+  .spark .area-due .accesso{ position:relative; padding:56px 20px 22px; border:0; border-radius:16px; background:var(--bianco); color:var(--ardesia); box-shadow:0 24px 60px rgba(0,0,0,.28); }
+  .spark .area-due .accesso::before{ content:""; position:absolute; top:-22px; left:50%; width:44px; height:44px; margin-left:-22px; border-radius:50%; background:#F85004 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E") center / 22px no-repeat; box-shadow:0 8px 20px rgba(248,80,4,.35); }
+  .spark .area-due .accesso .modulo{ padding:0 !important; background:none !important; }
+  .spark .area-due .accesso label, .spark .area-due .accesso .riga-modulo{ color:var(--ardesia) !important; }
+  .spark .area-due .accesso .bot.pieno{ width:100%; justify-content:center; min-height:50px; background:#F85004; border-color:#F85004; color:var(--bianco); font-size:16px; }
+  .spark .area-due .accesso .nota{ text-align:center; color:var(--petrolio); }
+}
+@media (max-width:720px){
+  .spark .area-due .punti li::before{ position:static !important; transform:none !important; margin:0 !important; }
+  .spark .area-due .punti li{ padding-left:0 !important; }
+  .spark .filtri a{ font-size:11px; letter-spacing:.03em; padding:6px 4px; white-space:nowrap; }
+}
+
+/* ===== prova 5 · giro finale ===== */
+/* profilo neutro per chi non ha il ritratto */
+.persona-segnaposto{ display:block; width:100%; aspect-ratio:4 / 5; border-radius:6px; background:var(--sp-t3) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237d9696' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8.5' r='3.6'/%3E%3Cpath d='M5 20c1.1-3.6 3.9-5.4 7-5.4s5.9 1.8 7 5.4'/%3E%3C/svg%3E") center 58% / 46% no-repeat; }
+
+/* Area Riservata: ingresso scuro e raccolto, su computer e telefono */
+.spark main:has(.area-due) > .apertura{ background:var(--ardesia); color:var(--bianco); box-shadow:0 0 0 100vmax var(--ardesia); clip-path:inset(0 -100vmax); padding-block:clamp(40px, 6vw, 96px) clamp(64px, 7vw, 112px) !important; margin-bottom:0; }
+body:has(.area-due) .sp-piede{ padding-top:0; }
+body:has(.area-due) .sp-piede-carta{ border-top-left-radius:0; border-top-right-radius:0; }
+.spark .area-due{ gap:clamp(36px, 6vw, 96px); }
+.spark .area-due h1{ color:var(--bianco); }
+.spark .area-due .occhiello{ color:var(--salvia) !important; letter-spacing:.14em; }
+.spark .area-due .guida{ color:rgba(255,255,255,.78); }
+.spark .area-due .punti{ margin-top:22px; border-color:rgba(255,255,255,.16) !important; }
+.spark .area-due .punti li{ display:flex; align-items:center; gap:12px; padding:14px 0 !important; border-color:rgba(255,255,255,.16) !important; color:var(--bianco); }
+.spark .area-due .punti li::before{ content:"" !important; display:block !important; position:static !important; flex:none; width:8px; height:8px; margin:0 !important; border-radius:50%; background:#F85004; transform:none !important; }
+.spark .area-due .accesso{ position:relative; padding:60px clamp(20px, 2.6vw, 36px) clamp(22px, 2.4vw, 32px); border:0; border-radius:16px; background:var(--bianco); color:var(--ardesia); box-shadow:0 14px 34px rgba(0,0,0,.2); }
+.spark .area-due .accesso::before{ content:""; position:absolute; top:-22px; left:50%; width:44px; height:44px; margin-left:-22px; border-radius:50%; background:#F85004 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E") center / 22px no-repeat; box-shadow:0 8px 20px rgba(248,80,4,.3); }
+.spark .area-due .accesso .modulo{ padding:0 !important; background:none !important; }
+.spark .area-due .accesso label, .spark .area-due .accesso .riga-modulo, .spark .area-due .accesso .riga-modulo a{ color:var(--ardesia) !important; }
+.spark .area-due .accesso .bot.pieno{ width:100%; justify-content:center; min-height:50px; background:#F85004; border-color:#F85004; color:var(--bianco); font-size:16px; }
+.spark .area-due .accesso .bot.pieno:hover{ background:#e04603; border-color:#e04603; }
+.spark .area-due .accesso .nota{ text-align:center; color:var(--petrolio); }
+@media (max-width:720px){
+  .spark .area-due{ gap:56px; }
+  .spark .area-due .occhiello{ color:var(--salvia) !important; }
+  .spark .area-due .accesso{ box-shadow:0 12px 28px rgba(0,0,0,.2); }
+  /* Bacheca: titoli delle colonne senza riga sotto */
+  .spark .colonna-titolo{ border-bottom:0; padding-bottom:4px; margin-bottom:10px; }
+  .spark .colonna-conta{ display:none; }
+  /* profilo neutro nella scheda del telefono: occupa la colonna della foto */
+  .spark .persone > .persona:nth-child(n) > .persona-segnaposto{ border-radius:0; background-size:52%; }
+}
+/* Area Riservata al computer: il piè di pagina continua la fascia scura, a tutta larghezza */
+body:has(.area-due) .sp-piede{ padding:0 !important; }
+body:has(.area-due) .sp-piede-carta{ max-width:none; border-radius:0 !important; padding-inline:max(var(--sp-lato), calc((100% - var(--sp-max)) / 2)) !important; }
