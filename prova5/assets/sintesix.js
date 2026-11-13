@@ -8,12 +8,15 @@
     var chiudi = function () {
       bottone.setAttribute('aria-expanded', 'false');
       bottone.textContent = 'Menu';
-      menu.hidden = true;
+      if (menu.hidden) return;
+      menu.classList.add('chiude');
+      setTimeout(function () { menu.classList.remove('chiude'); if (bottone.getAttribute('aria-expanded') !== 'true') menu.hidden = true; }, 210);
     };
     bottone.addEventListener('click', function () {
       if (bottone.getAttribute('aria-expanded') === 'true') { chiudi(); return; }
       bottone.setAttribute('aria-expanded', 'true');
       bottone.textContent = 'Chiudi';
+      menu.classList.remove('chiude');
       menu.hidden = false;
     });
     d.addEventListener('keydown', function (e) {

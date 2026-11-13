@@ -858,3 +858,77 @@ a.sp-risorsa:hover .sp-risorsa-copertina img{ transform:scale(1.04); }
 /* Home: anche sulla foto il logo schiarisce piano (prima la regola della Home toglieva la transizione) */
 .spark.con-eroe .testata .marchio img, .spark .testata .marchio img{ transition:opacity .6s ease, transform .35s cubic-bezier(.25,.8,.35,1), filter .45s ease; }
 .spark.con-eroe .testata .marchio:active img{ transition-duration:.25s, .25s, .45s; }
+
+/* ===== prova 5 · telefono ===== */
+/* menu a tutto schermo che scende morbido (anche su tablet) */
+@media (max-width:1180px){
+  .spark .menu-mobile{ position:absolute; left:0; right:0; top:100%; height:calc(100dvh - 64px); max-height:none; overflow-y:auto; padding-bottom:48px; background:var(--bianco); border-top:1px solid rgba(48,60,66,.12); box-shadow:0 30px 60px rgba(31,40,44,.12); }
+  .spark .menu-mobile:not([hidden]){ animation:mm-entra .42s cubic-bezier(.16,1,.3,1) both; }
+  .spark .menu-mobile.chiude{ animation:mm-esce .22s ease-in both; }
+  .spark .menu-mobile:not([hidden]) li{ animation:sp-su .5s cubic-bezier(.16,1,.3,1) both; }
+  .spark .menu-mobile li:nth-child(1){ animation-delay:.06s; } .spark .menu-mobile li:nth-child(2){ animation-delay:.1s; }
+  .spark .menu-mobile li:nth-child(3){ animation-delay:.14s; } .spark .menu-mobile li:nth-child(4){ animation-delay:.18s; }
+  .spark .menu-mobile li:nth-child(5){ animation-delay:.22s; } .spark .menu-mobile li:nth-child(6){ animation-delay:.26s; }
+  .spark .menu-mobile li a{ padding:16px 0; font-size:28px; }
+  html:has(#menu-mobile:not([hidden])){ overflow:hidden; }
+}
+@keyframes mm-entra{ from{ opacity:0; transform:translateY(-14px); } to{ opacity:1; transform:none; } }
+@keyframes mm-esce{ to{ opacity:0; transform:translateY(-10px); } }
+@media (prefers-reduced-motion:reduce){ .spark .menu-mobile, .spark .menu-mobile li{ animation:none !important; } }
+
+@media (max-width:720px){
+  /* apertura: la foto sopra, il testo sotto su fondo scuro, niente testo sopra le persone */
+  .sp-foto-eroe{ display:flex !important; flex-direction:column; min-height:0 !important; }
+  .spark .sp-foto-eroe .sp-fe-img{ position:relative !important; inset:auto !important; order:-1; width:100%; height:auto !important; aspect-ratio:5 / 4; object-position:64% 45% !important; z-index:0; }
+  .spark .sp-foto-eroe::before{ z-index:1; pointer-events:none; background:linear-gradient(180deg, rgba(31,40,44,.62) 0%, rgba(31,40,44,0) 20%) !important; }
+  .spark .sp-fe-dentro{ position:relative; z-index:2; padding:30px var(--sp-lato) 40px !important; }
+  .spark .sp-foto-eroe .sp-eyebrow{ font-size:14px; letter-spacing:.01em; text-transform:none; color:var(--salvia); margin-bottom:14px; }
+  .spark .sp-foto-eroe h1{ font-size:clamp(34px, 9.4vw, 42px); }
+  .sp-scorri{ display:none !important; }
+  /* sezioni ben separate e con lo stesso respiro */
+  .spark main > .sp-sezione{ padding-block:56px; }
+  .spark main > .sp-sezione + .sp-sezione{ border-top:1px solid rgba(48,60,66,.12); }
+  /* le tre cifre: la riga non tocca più il testo */
+  .spark .sp-numeri li, .anim .spark .sp-numeri li{ padding:22px 0 26px !important; gap:8px; }
+  .spark .sp-numeri li:first-child{ padding-top:4px !important; }
+  /* quattro aree: le quattro linguette tutte visibili, due per riga */
+  .spark .sp-linguette{ display:grid !important; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:6px; overflow:visible; scroll-snap-type:none; }
+  .spark .sp-linguette button{ white-space:normal; padding:12px 8px; font-size:11.5px; line-height:1.25; letter-spacing:.06em; text-align:center; justify-content:center; }
+  .spark .sp-voci li{ display:none; }
+  .spark .sp-pannello{ gap:16px; }
+  /* Home più corta: via la banda decorativa, schede compatte */
+  .spark main > figure.sp-banda:not(.sp-banda-pagina){ display:none; }
+  .spark .sede-scheda{ grid-template-columns:116px minmax(0, 1fr); }
+  .spark .sede-scheda img{ min-height:0; height:100%; }
+  .spark .sede-scheda-testo{ padding:16px 18px; gap:6px; }
+  .spark .sp-p:has(.sp-p-foto) .sp-p-dati{ display:none; }
+  .spark .sp-p:has(.sp-p-foto){ grid-template-columns:84px minmax(0, 1fr); padding:16px; }
+  .spark .sp-p:has(.sp-p-foto) .sp-p-foto{ width:84px; }
+  .spark .sp-risorse .sp-risorsa:has(.sp-risorsa-copertina){ display:grid; grid-template-columns:104px minmax(0, 1fr); grid-template-rows:auto 1fr; }
+  .spark .sp-risorsa:has(.sp-risorsa-copertina) .sp-risorsa-copertina{ grid-row:1 / 3; aspect-ratio:auto; height:100%; min-height:120px; }
+  .spark .sp-risorsa:has(.sp-risorsa-copertina) .sp-risorsa-alto{ padding:14px 16px 0; background:none; gap:4px; }
+  .spark .sp-risorsa:has(.sp-risorsa-copertina) .sp-risorsa-cat{ font-size:13px; font-family:var(--testo); letter-spacing:.08em; text-transform:uppercase; color:var(--petrolio); }
+  .spark .sp-risorsa:has(.sp-risorsa-copertina) .sp-risorsa-basso{ padding:6px 16px 14px; gap:4px; }
+  .spark .sp-risorsa:has(.sp-risorsa-copertina) .sp-risorsa-titolo{ font-size:17px; }
+  .spark .sp-risorsa:has(.sp-risorsa-copertina) .sp-risorsa-riga, .spark .sp-risorsa:has(.sp-risorsa-copertina) .sp-freccia{ display:none; }
+  .spark .sp-risorse{ gap:10px; }
+  /* sottomenu: tutte le voci visibili su due colonne, niente scorrimento di lato */
+  .spark .sottomenu ul{ display:grid !important; grid-template-columns:repeat(2, minmax(0, 1fr)); width:100%; overflow:visible; }
+  .spark .sottomenu a{ white-space:normal; justify-content:center; text-align:center; width:100%; min-height:44px; padding:8px 10px; font-size:11.5px; line-height:1.25; }
+  .spark .sottomenu li:last-child:nth-child(odd){ grid-column:1 / -1; }
+  /* pagine interne più corte */
+  .spark .sp-striscia-colore{ display:none; }
+  .spark .sp-striscia-4{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  .spark .persona > p:not(.bio-libera){ -webkit-line-clamp:3; }
+}
+@media (max-width:720px){
+  .spark .sp-schede.impilate > .sp-pannello{ grid-template-rows:auto auto; align-content:start; }
+  .spark .sp-voci{ justify-content:flex-start; }
+  .spark .sp-voci .sp-bottoni{ margin-top:0; }
+}
+@media (max-width:720px){
+  .spark .sp-voci ul{ display:none; }
+  .spark .sp-voci .sp-bottoni{ padding-top:0; }
+  .spark .sp-pannello{ padding-top:14px; }
+  .spark .sp-vetrina{ min-height:0; }
+}
